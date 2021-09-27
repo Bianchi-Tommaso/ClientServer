@@ -9,6 +9,7 @@ import java.net.Socket;
 
 public class Server 
 {
+    private int porta;
     ServerSocket server = null;
     Socket client = null;
     String stringRicevuta = null;
@@ -16,13 +17,18 @@ public class Server
     BufferedReader inDalClient;
     DataOutputStream outVersoClient;
 
+    public Server(int porta) 
+    {
+        this.porta = porta;
+    }
+    
     public Socket Attendi()
     {
         try
         {
             System.out.println("1 Server partito in Esecuzione");
 
-            server = new ServerSocket(6789);
+            server = new ServerSocket(porta);
 
             client = server.accept();
 
@@ -55,7 +61,7 @@ public class Server
 
             System.out.println("9 SERVER: Fine Elaborazione .... Buona Notte!!!");
             client.close();
-        }
+        }   
         catch(Exception e)
         {
             System.out.println(e.getMessage());

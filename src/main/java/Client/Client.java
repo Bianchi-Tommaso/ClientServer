@@ -9,14 +9,20 @@ import java.net.UnknownHostException;
 
 public class Client
 {
-    String nomeServer = "localhost";
-    int portaServer = 6789;
+    private String nomeServer;
+    private int portaServer;
     Socket mioSocket;
     BufferedReader tastiera;
     String stringUtente;
     String stringRicevutaDalServer;
     DataOutput outVersoServer;
     BufferedReader inDalServer;
+
+    public Client(String nomeServer, int portaServer) 
+    {
+        this.nomeServer = nomeServer;
+        this.portaServer = portaServer;
+    }
 
     public Socket Connetti()
     {
